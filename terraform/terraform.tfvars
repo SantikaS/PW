@@ -1,0 +1,7 @@
+pm_api_url = "https://192.168.77.14:8006/api2/json"
+pm_api_token_id = "root@pam!terraform"
+pm_api_token_secret = "50047ef6-6d4e-4615-acbb-879871b0b750"
+ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDANW1nJ3SCqkTvQbMLPQW9mtaERVWSMbrVOfY1rrS/mdCwjIMbHuTvlA6ZxKxN8J5m2zUMhJj/2CsZwN6ybkv/HG3MRG+X4B9nX9JWQJNbgaYONEV1sWBCVP3ZS8MU7LcUzO2rh/Uga1G2uURjfASgLP3QfAQCvyjAl1ubY7SawVymD/WWRFuSceDcbDWev51gUmGkIt/E4JoXnQknVzZDJFde/Tia4TT9MKmmLfbbK49khDCsRfslLxdP+spzKGCfhbuM2Lm0TQ811Ry/dktyw/+XQz6IW5H8K8AwzvEkihTZe15aKbtP3nUDINgwr17id5DzfWyJAYCFvcscGyYbTOxca+PXIB+Wdm9KGblg+ZGF3h60iQBfvj9JiMsvy1Gj1JB4J+DrftvsZ9BDsRX6/In2F8lOVWzxIPmCeVMzbtgz8xPcVcIhTUe105gmkw2sPXvJ15GiLid0A9/rxBZqOCpNZJX1X6L3Aa1hFvagPjEUDD+GRK0g3pug7MnMlK8= ubuntu"
+pm_user = "root@pam"
+pm_password = "1q2w3e4R5"
+target_node = "pve"

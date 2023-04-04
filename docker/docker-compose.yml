@@ -1,0 +1,70 @@
+version: '3.6'
+
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitlab'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.77.11'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '2222:22'
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
+  ui_db:
+    image: mongo:${MONGO_VERSION}
+    hostname: mongo
+    volumes:
+      - ui_db:/data/db
+    networks:
+      - crawler
+  ui:
+    build: ./search_engine_ui-master
+    #image: ${USERNAME}/se_ui:${UI_VERSION}
+    hostname: se_ui
+    depends_on:
+      - ui_db
+    ports:
+      - ${UI_PORT}
+    networks:
+      - crawler
+    #logging:
+    #  driver: "fluentd"
+    #  options:
+    #    fluentd-address: localhost:24224
+    #    tag: service.ui
+  crawler:
+    build: ./search_engine_crawler-master
+    #image: ${USERNAME}/se_crawler:${CRAWLER_VERSION}
+    hostname: se_crawler
+    depends_on:
+      - ui_db
+      - rabbitmq
+    networks:
+      - crawler
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS} 
+    #logging:
+    #  driver: "fluentd"
+    #  options:
+    #    fluentd-address: localhost:24224
+    #    tag: service.crawler  
+  rabbitmq:
+    image: rabbitmq:latest
+    hostname: rabbitmq
+    networks:
+      crawler:
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}   
+volumes:
+  ui_db:
+
+networks:
+  crawler:
