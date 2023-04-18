@@ -1,1 +1,0 @@
-kubeadm join 192.168.77.101:6443 --token vqvm61.ua9buexden116u28 --discovery-token-ca-cert-hash sha256:cfd9dedfd07ef1a9f7634084c32f5caae335a0b8e342e60194ac53efd727d9f1

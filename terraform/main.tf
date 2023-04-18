@@ -24,12 +24,12 @@ resource "proxmox_vm_qemu" "kube-server" {
   cores = 2
   sockets = 1
   cpu = "host"
-  memory = 4096
+  memory = 8192
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
     slot = 0
-    size = "64G"
+    size = "256G"
     type = "scsi"
     storage = "VMs"
     #storage_type = "zfspool"
@@ -66,12 +66,12 @@ resource "proxmox_vm_qemu" "kube-agent" {
   cores = 2
   sockets = 1
   cpu = "host"
-  memory = 4096
+  memory = 8192
   scsihw = "virtio-scsi-pci"
   bootdisk = "scsi0"
   disk {
     slot = 0
-    size = "64G"
+    size = "192G"
     type = "scsi"
     storage = "VMs"
     #storage_type = "zfspool"

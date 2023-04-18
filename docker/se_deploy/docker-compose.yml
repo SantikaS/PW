@@ -1,0 +1,55 @@
+version: '3.6'
+
+services:
+  ui_db:
+    image: mongo:${MONGO_VERSION}
+    hostname: mongo
+    volumes:
+      - ui_db:/data/db
+    networks:
+      - crawler
+  ui:
+    #build: ./search_engine_ui-master
+    image: ${USERNAME}/se_ui:${UI_VERSION}
+    hostname: se_ui
+    depends_on:
+      - ui_db
+    ports:
+      - ${UI_PORT}
+    networks:
+      - crawler
+    #logging:
+    #  driver: "fluentd"
+    #  options:
+    #    fluentd-address: localhost:24224
+    #    tag: service.ui
+  crawler:
+    #build: ./search_engine_crawler-master
+    image: ${USERNAME}/se_crawler:${CRAWLER_VERSION}
+    hostname: se_crawler
+    depends_on:
+      - ui_db
+      - rabbitmq
+    networks:
+      - crawler
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS} 
+    #logging:
+    #  driver: "fluentd"
+    #  options:
+    #    fluentd-address: localhost:24224
+    #    tag: service.crawler  
+  rabbitmq:
+    image: rabbitmq:latest
+    hostname: rabbitmq
+    networks:
+      crawler:
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}   
+volumes:
+  ui_db:
+
+networks:
+  crawler:

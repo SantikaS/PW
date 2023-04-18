@@ -81,9 +81,9 @@
     vars:
       packages:
         # it is usually recommended to specify which version you want to install
-        - kubelet=1.23.6-00
-        - kubeadm=1.23.6-00
-        - kubectl=1.23.6-00
+        - kubelet=1.21.7-00 #1.23.6-00
+        - kubeadm=1.21.7-00 #1.23.6-00
+        - kubectl=1.21.7-00 #1.23.6-00
         
   - name: hold kubernetes binary versions (prevent from being updated)
     dpkg_selections:

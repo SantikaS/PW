@@ -51,6 +51,7 @@
   - name: get calico networking
     get_url:
       url: https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
+      #url: https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
       dest: "{{ home_dir }}/calico.yaml"
       
   - name: apply calico networking

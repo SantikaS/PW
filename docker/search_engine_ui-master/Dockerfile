@@ -1,5 +1,6 @@
 FROM python:2.7-alpine
 #FROM python:2.7.18-alpine3.11
+#Доделка
 
 WORKDIR /usr/src/app
 RUN mkdir /usr/src/app/ui

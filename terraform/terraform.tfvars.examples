@@ -1,0 +1,7 @@
+pm_api_url = "https://192.168.77.14:8006/api2/json"
+pm_api_token_id = "root@pam!terraform"
+pm_api_token_secret = "dkjf;sldjf;osjf;sdojf;osdjf;odsj"
+ssh_key = "ssh-rsa ladlskdlsdlaksdlkasjdlksjaldkjalskdjladjlaksjlkjdakljsd"
+pm_user = "root@pam"
+pm_password = "s;od;fods;fojsd"
+target_node = "pve"
