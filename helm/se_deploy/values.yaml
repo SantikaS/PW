@@ -1,0 +1,12 @@
+service:
+  internalPort: 8000
+  externalPort: 8000
+
+image:
+  repository: santikas/se_ui
+  tag: "latest"
+
+ui_dbHost:
+
+ingress:
+  class: nginx

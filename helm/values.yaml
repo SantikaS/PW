@@ -1,0 +1,10 @@
+rabbitmq:
+  auth:
+    username: admin
+    password: "admin"
+    
+ui_db:    
+  service:
+    externalPort: 27017 
+
+

@@ -1,0 +1,7 @@
+name: ui
+version: 1.0.0
+description: Search engine application UI
+maintainers:
+  - name: SantikaS
+    email: santika@yandex.ru
+appVersion: 1.0

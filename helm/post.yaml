@@ -1,0 +1,76 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gitlab-prometheus-server
+  namespace: gitlab
+  uid: c1fdecc4-d6a1-455d-91d3-511087da5b06
+  resourceVersion: '402549'
+  creationTimestamp: '2023-04-12T07:23:27Z'
+  labels:
+    app: prometheus
+    app.kubernetes.io/managed-by: Helm
+    chart: prometheus-15.18.0
+    component: server
+    heritage: Helm
+    release: gitlab
+  annotations:
+    meta.helm.sh/release-name: gitlab
+    meta.helm.sh/release-namespace: gitlab
+  managedFields:
+    - manager: helm
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-12T07:23:26Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-namespace: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:app.kubernetes.io/managed-by: {}
+            f:chart: {}
+            f:component: {}
+            f:heritage: {}
+            f:release: {}
+        f:spec:
+          f:ports:
+            .: {}
+            k:{"port":80,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:app: {}
+            f:component: {}
+            f:release: {}
+          f:sessionAffinity: {}
+          f:type: {}
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9090
+      nodePort: 30303
+  selector:
+    app: prometheus
+    component: server
+    release: gitlab
+  clusterIP: 10.100.205.80
+  clusterIPs:
+    - 10.100.205.80
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+status:
+  loadBalancer: {}

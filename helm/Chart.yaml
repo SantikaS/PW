@@ -1,0 +1,7 @@
+name: se_app
+version: 1.0.0
+description: Search engine applilcation
+maintainers:
+  - name: SantikaS
+    email: santika@yandex.ru
+appVersion: 1.0    
